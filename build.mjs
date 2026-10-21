@@ -112,7 +112,11 @@ function render([tag, folder], page) {
   const c = (key) => rich('common', key);
   const url = (f, p) => SITE + f + PAGES[p];
   const current = (p) => (p === page ? ' aria-current="page"' : '');
-  const date = new Intl.DateTimeFormat(tag, { dateStyle: 'long', timeZone: 'UTC' }).format(
+  // British English, like the App Store listing (en-GB).
+  const date = new Intl.DateTimeFormat(tag === 'en' ? 'en-GB' : tag, {
+    dateStyle: 'long',
+    timeZone: 'UTC',
+  }).format(
     EFFECTIVE,
   );
 
