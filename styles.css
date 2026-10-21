@@ -1,0 +1,371 @@
+/* JUNO site: the game's own look. A lavender-to-mint sky, soft paper cards, a coral accent. */
+:root {
+  --ink: #2b2333;
+  --ink-soft: #5f566b;
+  --paper: #fffdf8;
+  --paper-2: #f4effb;
+  --line: #e4dcf3;
+  --coral: #ff8f78;
+  --coral-dark: #e8705a;
+  --pink: #ff9fbf;
+  --gold: #ffd25a;
+  --mint: #7fd0c4;
+  --peach: #ffc9b5;
+  --lavender: #c9a6ff;
+  --sky: #7fb6ff;
+  --shadow: 0 8px 24px rgb(43 35 51 / 0.12);
+  --font:
+    ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font: 500 17px/1.6 var(--font);
+  color: var(--ink);
+  /* The island's sky, as in the game, the launch image and the app icon. */
+  background: linear-gradient(#a58ce8 0, #c3b4f2 420px, #cfe0f6 900px, #c4f0e4 1500px) #c4f0e4;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: min(100% - 32px, 980px);
+  margin-inline: auto;
+}
+
+/* Header ------------------------------------------------------------------ */
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 18px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 1px 6px rgb(43 35 51 / 0.25);
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  box-shadow: var(--shadow);
+}
+
+.top nav {
+  display: flex;
+  gap: 8px;
+}
+
+.top nav a {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgb(255 253 248 / 0.9);
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.top nav a[aria-current='page'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Cards --------------------------------------------------------------------- */
+
+.card {
+  background: var(--paper);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4vw, 40px);
+}
+
+.card + .card,
+.card + .grid,
+.grid + .card,
+.shots + .card,
+.card + .shots {
+  margin-top: 26px;
+}
+
+/* Hero ---------------------------------------------------------------------- */
+
+.hero {
+  text-align: center;
+}
+
+.hero .icon {
+  width: 128px;
+  height: 128px;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
+.wordmark {
+  margin: 18px 0 4px;
+  font-size: clamp(52px, 13vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: #8a6ee0;
+}
+
+.wordmark span {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.32em;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.tagline {
+  margin: 16px auto 0;
+  max-width: 34em;
+  font-size: clamp(18px, 2.6vw, 21px);
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--gold);
+  font-weight: 900;
+  box-shadow: 0 4px 0 #e3b43d;
+}
+
+.small {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+}
+
+.languages a[aria-current='true'] {
+  font-weight: 900;
+  text-decoration: none;
+}
+
+/* Screenshots --------------------------------------------------------------- */
+
+.shots {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 6px 4px 14px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.shots img {
+  flex: 0 0 auto;
+  width: min(62vw, 230px);
+  height: auto;
+  border-radius: 28px;
+  border: 6px solid var(--paper);
+  box-shadow: var(--shadow);
+  scroll-snap-align: center;
+  background: var(--paper-2);
+}
+
+@media (min-width: 900px) {
+  .shots {
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .shots img {
+    width: 214px;
+  }
+}
+
+/* Feature grid ---------------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.grid .card {
+  margin: 0;
+  padding: 22px;
+  border-radius: 24px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 3.6vw, 32px);
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+h3 {
+  margin: 0 0 6px;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.grid h3::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 9px;
+  border-radius: 50%;
+  background: var(--dot, var(--coral));
+  vertical-align: 0;
+}
+
+.story {
+  background: linear-gradient(135deg, var(--paper) 55%, #eaf8f1);
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+p:last-child,
+li:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0 0 12px;
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* Text pages -------------------------------------------------------------------- */
+
+.prose h1 {
+  margin: 0 0 6px;
+  font-size: clamp(32px, 6vw, 46px);
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.prose h2 {
+  margin-top: 32px;
+  font-size: 23px;
+}
+
+.prose h3 {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.prose .lead {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.note {
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: 2px solid var(--line);
+  background: var(--paper-2);
+  font-weight: 700;
+}
+
+.button {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: var(--coral);
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 4px 0 var(--coral-dark);
+}
+
+.button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--coral-dark);
+}
+
+/* Footer -------------------------------------------------------------------------- */
+
+footer {
+  margin-top: 40px;
+  padding: 26px 0 40px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 15px;
+}
+
+footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  justify-content: space-between;
+}
+
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+footer .languages {
+  margin-top: 14px;
+  justify-content: flex-start;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:active {
+    transform: none;
+  }
+}
