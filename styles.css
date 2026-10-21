@@ -131,7 +131,13 @@ a:focus-visible,
 /* Hero ---------------------------------------------------------------------- */
 
 .hero {
+  position: relative;
+  overflow: hidden;
   text-align: center;
+  background:
+    radial-gradient(circle at 12% 18%, #fff1c9 0 70px, transparent 71px),
+    radial-gradient(circle at 92% 82%, #e3f7f1 0 90px, transparent 91px),
+    var(--paper);
 }
 
 .hero .icon {
@@ -139,6 +145,111 @@ a:focus-visible,
   height: 128px;
   border-radius: 30px;
   box-shadow: var(--shadow);
+  animation: bob 4s ease-in-out infinite;
+}
+
+/* Little things drifting around the hero, as on the island. */
+.float {
+  position: absolute;
+  font-size: 30px;
+  animation: drift 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.f1 {
+  top: 26px;
+  left: 8%;
+}
+
+.f2 {
+  top: 40px;
+  right: 9%;
+  animation-delay: -2s;
+}
+
+.f3 {
+  bottom: 120px;
+  left: 6%;
+  animation-delay: -4s;
+}
+
+.f4 {
+  bottom: 90px;
+  right: 7%;
+  animation-delay: -1s;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-8px) rotate(-2deg);
+  }
+}
+
+@keyframes drift {
+  50% {
+    transform: translateY(-12px) rotate(10deg);
+  }
+}
+
+/* GrandPa Tintin's hello. */
+.bubble {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 30em;
+  margin: 24px auto 30px;
+  padding: 16px 20px;
+  border-radius: 24px;
+  background: #eaf8f1;
+  text-align: start;
+}
+
+.bubble .turtle {
+  flex: 0 0 auto;
+  font-size: 44px;
+  animation: bob 3s ease-in-out infinite;
+}
+
+.bubble blockquote {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.bubble figcaption {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.promises {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.promises li {
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--paper-2);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.promises li::before {
+  content: '✓ ';
+  color: #3fb3a3;
 }
 
 .wordmark {
@@ -150,12 +261,38 @@ a:focus-visible,
   color: #8a6ee0;
 }
 
-.wordmark span {
+.wordmark .sub {
   display: block;
   margin-top: 6px;
   font-size: 0.32em;
   letter-spacing: 0.08em;
   color: var(--ink-soft);
+}
+
+/* Each letter its own colour and tilt, like toy blocks. */
+.letters b {
+  display: inline-block;
+  font-weight: 900;
+}
+
+.letters b:nth-child(1) {
+  color: #8a6ee0;
+  transform: rotate(-6deg);
+}
+
+.letters b:nth-child(2) {
+  color: var(--coral);
+  transform: translateY(-4px) rotate(4deg);
+}
+
+.letters b:nth-child(3) {
+  color: #3fb3a3;
+  transform: rotate(-3deg);
+}
+
+.letters b:nth-child(4) {
+  color: #f2b51d;
+  transform: translateY(-2px) rotate(6deg);
 }
 
 .tagline {
@@ -168,7 +305,7 @@ a:focus-visible,
 
 .badge {
   display: inline-block;
-  margin-top: 22px;
+  margin-top: 12px;
   padding: 12px 22px;
   border-radius: 999px;
   background: var(--gold);
@@ -203,6 +340,14 @@ a:focus-visible,
   padding: 6px 4px 14px;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
+}
+
+.shots img:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.shots img:nth-child(even) {
+  transform: rotate(2deg) translateY(10px);
 }
 
 .shots img {
@@ -254,15 +399,119 @@ h3 {
   font-weight: 900;
 }
 
-.grid h3::before {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-right: 9px;
+/* How it works: three big steps. */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  margin: 0;
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--paper-2);
+  counter-increment: step;
+}
+
+.step-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
   border-radius: 50%;
-  background: var(--dot, var(--coral));
-  vertical-align: 0;
+  background: var(--dot);
+  font-size: 30px;
+  box-shadow: 0 4px 0 rgb(43 35 51 / 0.12);
+}
+
+.steps h3::before {
+  content: counter(step) '. ';
+  color: var(--ink-soft);
+}
+
+.feature {
+  transition: transform 0.2s ease;
+}
+
+.feature:hover {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.feature:hover .feature-icon {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 10px;
+  border-radius: 16px;
+  background: var(--dot);
+  font-size: 28px;
+}
+
+@keyframes wiggle {
+  25% {
+    transform: rotate(-12deg);
+  }
+  75% {
+    transform: rotate(12deg);
+  }
+}
+
+/* The languages, each in its own words. */
+.tongues {
+  background: linear-gradient(135deg, var(--paper) 50%, #f1ecff);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips a {
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.chips a:nth-child(5n + 1) {
+  border-color: var(--pink);
+}
+
+.chips a:nth-child(5n + 2) {
+  border-color: var(--gold);
+}
+
+.chips a:nth-child(5n + 3) {
+  border-color: var(--mint);
+}
+
+.chips a:nth-child(5n + 4) {
+  border-color: var(--lavender);
+}
+
+.chips a:nth-child(5n) {
+  border-color: var(--sky);
+}
+
+.chips a[aria-current='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 .story {
@@ -365,7 +614,15 @@ footer .languages {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button:active {
+  .button:active,
+  .feature:hover {
     transform: none;
+  }
+
+  .hero .icon,
+  .float,
+  .bubble .turtle,
+  .feature:hover .feature-icon {
+    animation: none;
   }
 }

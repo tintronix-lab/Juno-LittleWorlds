@@ -1,6 +1,6 @@
 // Builds the site: one set of pages per language from the templates below and
-// the text in i18n/<language>.json. English is published at the root, Swedish
-// in sv/.
+// the text in i18n/<language>.json. English is published at the root, every
+// other language in its own folder (sv/, de/, ja/ …), the same 21 as the game.
 //
 //   node build.mjs           writes the pages
 //   node build.mjs --check   only verifies the translations
@@ -21,11 +21,58 @@ const SUPPORT_EMAIL = 'raztechsupport@icloud.com';
 const LANGUAGES = [
   ['en', '', 'English'],
   ['sv', 'sv/', 'Svenska'],
+  ['da', 'da/', 'Dansk'],
+  ['no', 'no/', 'Norsk'],
+  ['fi', 'fi/', 'Suomi'],
+  ['de', 'de/', 'Deutsch'],
+  ['nl', 'nl/', 'Nederlands'],
+  ['fr', 'fr/', 'Français'],
+  ['es', 'es/', 'Español'],
+  ['it', 'it/', 'Italiano'],
+  ['pt', 'pt/', 'Português (Brasil)'],
+  ['pl', 'pl/', 'Polski'],
+  ['ru', 'ru/', 'Русский'],
+  ['el', 'el/', 'Ελληνικά'],
+  ['tr', 'tr/', 'Türkçe'],
+  ['ms', 'ms/', 'Bahasa Melayu'],
+  ['sw', 'sw/', 'Kiswahili'],
+  ['hi', 'hi/', 'हिन्दी'],
+  ['ja', 'ja/', '日本語'],
+  ['ko', 'ko/', '한국어'],
+  ['zh', 'zh/', '简体中文'],
 ];
+
+/** The turtle's one name in each language (the game's CLAUDE.md). */
+const GRANDPA = {
+  en: 'GrandPa Tintin',
+  sv: 'Morfar Tintin',
+  da: 'Morfar Tintin',
+  no: 'Morfar Tintin',
+  fi: 'Ukki Tintin',
+  de: 'Opa Tintin',
+  nl: 'Opa Tintin',
+  fr: 'Papi Tintin',
+  es: 'Abuelo Tintin',
+  it: 'Nonno Tintin',
+  pt: 'Vovô Tintin',
+  pl: 'Dziadek Tintin',
+  ru: 'Дедушка Tintin',
+  el: 'Παππούς Tintin',
+  tr: 'Dede Tintin',
+  ms: 'Atuk Tintin',
+  sw: 'Babu Tintin',
+  hi: 'नानाजी Tintin',
+  ja: 'おじいちゃんTintin',
+  ko: '할아버지 Tintin',
+  zh: '外公Tintin',
+};
+
+/** Dates on the privacy page: Norwegian dates are Bokmål. */
+const DATE_TAGS = { en: 'en-GB', no: 'nb' };
 
 const PAGES = { index: '', support: 'support.html', privacy: 'privacy.html' };
 
-/** Screenshots from the game, shown on the product page when the file exists. */
+/** Screenshots from the game (assets/shots/<language>/<name>.jpg), shown when they exist. */
 const SHOTS = [
   ['home', 'shotHome'],
   ['room', 'shotRoom'],
@@ -49,7 +96,10 @@ const escape = (text) =>
 
 /** The markup and placeholders a string uses, for comparing a translation with the English. */
 const shape = (text) =>
-  [...text.matchAll(/<\/?(?:b|a(?::[a-z-]+)?)>|\{\w+\}/g)].map((m) => m[0]).sort().join(' ');
+  [...text.matchAll(/<\/?(?:b|a(?::[a-z-]+)?)>|\{\w+\}/g)]
+    .map((m) => m[0])
+    .sort()
+    .join(' ');
 
 function load(tag) {
   const file = `i18n/${tag}.json`;
@@ -79,10 +129,17 @@ const available = LANGUAGES.filter(([tag]) => {
       if (!(key in strings)) problems.push(`${tag}: ${section}.${key} is not in the English text`);
     }
   }
-  // The turtle has exactly two names: GrandPa Tintin in English, Morfar Tintin in Swedish.
+  // The turtle has one name per language, and no other language's name.
   const all = JSON.stringify(text);
-  const wrong = tag === 'sv' ? /GrandPa Tintin|Grandpa|Grandfather Tintin/ : /Morfar|Grandpa |Grandfather Tintin/;
-  if (wrong.test(all)) problems.push(`${tag}: the turtle's name is spelled another way`);
+  if (!all.includes(GRANDPA[tag]))
+    problems.push(`${tag}: the turtle is not called ${GRANDPA[tag]}`);
+  const others = Object.values(GRANDPA).filter(
+    (name) => !GRANDPA[tag].includes(name) && name !== GRANDPA[tag],
+  );
+  const stray = others.find((name) => all.includes(name));
+  if (stray) problems.push(`${tag}: the turtle is called ${stray}, not ${GRANDPA[tag]}`);
+  if (/Grandpa |Grandfather Tintin/.test(all))
+    problems.push(`${tag}: the turtle's name is spelled another way`);
   return true;
 });
 if (problems.length) {
@@ -113,12 +170,10 @@ function render([tag, folder], page) {
   const url = (f, p) => SITE + f + PAGES[p];
   const current = (p) => (p === page ? ' aria-current="page"' : '');
   // British English, like the App Store listing (en-GB).
-  const date = new Intl.DateTimeFormat(tag === 'en' ? 'en-GB' : tag, {
+  const date = new Intl.DateTimeFormat(DATE_TAGS[tag] ?? tag, {
     dateStyle: 'long',
     timeZone: 'UTC',
-  }).format(
-    EFFECTIVE,
-  );
+  }).format(EFFECTIVE);
 
   /** Links to this page in every language, each in its own name. */
   const switcher = (indent) =>
@@ -129,7 +184,10 @@ function render([tag, folder], page) {
       )
       .join('\n');
 
-  const shots = SHOTS.filter(([file]) => existsSync(`assets/${file}.png`));
+  /** The game in this page's language (assets/shots/<tag>/), else the English one. */
+  const shotPath = (file) =>
+    [`assets/shots/${tag}/${file}.jpg`, `assets/shots/en/${file}.jpg`].find((path) => existsSync(path));
+  const shots = SHOTS.filter(([file]) => shotPath(file));
   const faq = (keys) =>
     keys
       .map(
@@ -141,13 +199,22 @@ function render([tag, folder], page) {
 
   const bodies = {
     index: () => `      <section class="card hero">
+        <span class="float f1" aria-hidden="true">⭐</span>
+        <span class="float f2" aria-hidden="true">🌸</span>
+        <span class="float f3" aria-hidden="true">🫧</span>
+        <span class="float f4" aria-hidden="true">🍎</span>
         <img class="icon" src="${root}assets/icon.png" alt="${plain('index', 'iconAlt')}" width="128" height="128" />
-        <h1 class="wordmark">JUNO<span>Little Worlds</span></h1>
+        <h1 class="wordmark"><span class="letters" aria-label="JUNO"><b>J</b><b>U</b><b>N</b><b>O</b></span><span class="sub">Little Worlds</span></h1>
         <p class="tagline">${t('tagline')}</p>
+        <figure class="bubble">
+          <span class="turtle" aria-hidden="true">🐢</span>
+          <blockquote>${t('bubble')}</blockquote>
+          <figcaption>${t('bubbleWho')}</figcaption>
+        </figure>
         <span class="badge">${t('badge')}</span>
-        <p class="small languages">
-${switcher('          ')}
-        </p>
+        <ul class="promises">
+${[1, 2, 3, 4].map((n) => `          <li>${t(`promise${n}`)}</li>`).join('\n')}
+        </ul>
       </section>
 ${
   shots.length
@@ -156,7 +223,7 @@ ${
 ${shots
   .map(
     ([file, key], i) =>
-      `        <img src="${root}assets/${file}.png" alt="${plain('index', key)}" width="750" height="1624"${i ? ' loading="lazy"' : ''} />`,
+      `        <img src="${root}${shotPath(file)}" alt="${plain('index', key)}" width="750" height="1624"${i ? ' loading="lazy"' : ''} />`,
   )
   .join('\n')}
       </div>
@@ -166,26 +233,54 @@ ${shots
       <section class="card">
         <h2>${t('howTitle')}</h2>
         <p>${t('how1')}</p>
-        <p>${t('how2')}</p>
+        <ol class="steps">
+${[
+  ['🥚', 'peach'],
+  ['💜', 'lavender'],
+  ['⭐', 'gold'],
+]
+  .map(
+    ([emoji, color], i) => `          <li style="--dot: var(--${color})">
+            <span class="step-icon" aria-hidden="true">${emoji}</span>
+            <h3>${t(`step${i + 1}Title`)}</h3>
+            <p>${t(`step${i + 1}`)}</p>
+          </li>`,
+  )
+  .join('\n')}
+        </ol>
       </section>
 
       <div class="grid">
 ${[
-  ['care', 'pink'],
-  ['puzzles', 'gold'],
-  ['island', 'mint'],
-  ['room', 'peach'],
-  ['voice', 'lavender'],
-  ['parents', 'sky'],
+  ['care', 'pink', '🧼'],
+  ['puzzles', 'gold', '🧩'],
+  ['island', 'mint', '🏝️'],
+  ['room', 'peach', '🛋️'],
+  ['voice', 'lavender', '🐢'],
+  ['parents', 'sky', '⚙️'],
 ]
   .map(
-    ([key, color]) => `        <section class="card" style="--dot: var(--${color})">
+    ([key, color, emoji]) => `        <section class="card feature" style="--dot: var(--${color})">
+          <span class="feature-icon" aria-hidden="true">${emoji}</span>
           <h3>${t(`${key}Title`)}</h3>
           <p>${t(key)}</p>
         </section>`,
   )
   .join('\n')}
       </div>
+
+      <section class="card tongues">
+        <h2>${t('languagesTitle')}</h2>
+        <p>${t('languagesText')}</p>
+        <p class="chips">
+${available
+  .map(
+    ([other, f, name]) =>
+      `          <a href="${`${root}${f}` || './'}" lang="${other}" hreflang="${other}"${other === tag ? ' aria-current="true"' : ''}>${name}</a>`,
+  )
+  .join('\n')}
+        </p>
+      </section>
 
       <section class="card story">
         <h2>${t('storyTitle')}</h2>
@@ -248,7 +343,7 @@ ${['readAloud', 'purchases', 'parentArea', 'children', 'delete', 'site', 'change
 
   const description = plain(page, 'description');
   const title = plain(page, 'title');
-  const image = shots.length ? `assets/${shots[0][0]}.png` : 'assets/icon.png';
+  const image = shots.length ? shotPath(shots[0][0]) : 'assets/icon.png';
   return `<!doctype html>
 <html lang="${tag}">
   <head>
