@@ -75,9 +75,11 @@ const PAGES = { index: '', support: 'support.html', privacy: 'privacy.html' };
 /** Screenshots from the game (assets/shots/<language>/<name>.jpg), shown when they exist. */
 const SHOTS = [
   ['home', 'shotHome'],
-  ['room', 'shotRoom'],
-  ['shop', 'shotShop'],
+  ['recipes', 'shotRecipes'],
   ['puzzles', 'shotPuzzles'],
+  ['water', 'shotWater'],
+  ['room', 'shotRoom'],
+  ['sounds', 'shotSounds'],
 ];
 
 /** Where named links go. `root` is the path from the page to the site root. */
@@ -225,7 +227,7 @@ ${
 ${shots
   .map(
     ([file, key], i) =>
-      `        <img src="${root}${shotPath(file)}" alt="${plain('index', key)}" width="750" height="1624"${i ? ' loading="lazy"' : ''} />`,
+      `        <img src="${root}${shotPath(file)}" alt="${plain('index', key)}" width="750" height="1629"${i ? ' loading="lazy"' : ''} />`,
   )
   .join('\n')}
       </div>

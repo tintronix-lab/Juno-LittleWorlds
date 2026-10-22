@@ -362,8 +362,12 @@ a:focus-visible,
 }
 
 @media (min-width: 900px) {
+  /* Six screenshots: two rows of three on a wide screen, so none is cut off. */
   .shots {
+    display: grid;
+    grid-template-columns: repeat(3, 214px);
     justify-content: center;
+    gap: 34px 46px;
     overflow: visible;
   }
 
