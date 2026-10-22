@@ -108,6 +108,8 @@
     "parentArea": "Bir yetişkin onu ⚙︎ düğmesi ve ebeveyn kilidiyle açar. Orada dili, sesli okumayı, sesleri, uyku saatini, nazik bir mola hatırlatıcısını ve Hafıza Bahçesi kartlarının ne kadar süre açık kalacağını ayarlayabilir, oyuna baştan da başlayabilirsiniz.",
     "childrenTitle": "Çocuklar",
     "children": "JUNO, 6 ile 10 yaş arası çocuklar için yapılmıştır ve her oyuncuya çocuk olarak davranır. Hiçbir kişisel bilgi toplamadığı için onay istenecek, paylaşılacak ya da satılacak hiçbir şey yoktur.",
+    "ageRangeTitle": "Yaş aralığı",
+    "ageRange": "Teksas gibi bazı yerler, uygulamaların oyuncunun yaş aralığını kontrol etmesini ister. Yasanın istediği yerlerde JUNO, Apple'ın kendi sorma yolunu kullanır: bir yetişkin “13 yaş altı” gibi bir yaş aralığını paylaşmayı seçebilir, asla doğum tarihi değil. JUNO yanıtı yalnızca oyun açıkken tutar, asla kaydetmez veya göndermez ve oyun her yaşta aynıdır. Bir yetişkin paylaşmamayı seçerse oyun, bir yetişkin evet diyene kadar bekler.",
     "deleteTitle": "Çocuğunuzun verilerini silmek",
     "delete": "Juno'yu ve tüm ilerlemeyi silmek için Ebeveyn Alanı'nda <b>Oyuna baştan başla</b> seçeneğini seçin ya da her şeyi kaldırmak için uygulamayı silin. Satın alımlar Apple hesabınızda kalır.",
     "siteTitle": "Bu web sitesi",

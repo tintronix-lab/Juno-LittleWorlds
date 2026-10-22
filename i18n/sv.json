@@ -108,6 +108,8 @@
     "parentArea": "En vuxen öppnar det med ⚙︎-knappen och föräldraspärren. Där kan du välja språk, uppläsning, ljud, läggdags, en snäll påminnelse om paus och hur länge korten i Minnesträdgården ligger uppvända, och du kan börja om spelet.",
     "childrenTitle": "Barn",
     "children": "JUNO är gjort för barn mellan 6 och 10 år och behandlar alla som spelar som barn. Eftersom spelet inte samlar in några personuppgifter alls finns det inget att be om samtycke till, dela eller sälja.",
+    "ageRangeTitle": "Åldersgrupp",
+    "ageRange": "Vissa platser, till exempel Texas, kräver att appar kontrollerar spelarens åldersgrupp. Där lagen kräver det använder JUNO Apples eget sätt att fråga: en vuxen kan välja att dela en åldersgrupp som ”under 13”, aldrig ett födelsedatum. JUNO behåller svaret bara medan spelet är öppet, sparar eller skickar det aldrig, och spelet är likadant i alla åldrar. Om en vuxen väljer att inte dela väntar spelet tills en vuxen säger ja.",
     "deleteTitle": "Ta bort ditt barns data",
     "delete": "Välj <b>Börja om spelet</b> under Föräldrar för att ta bort Junon och alla framsteg, eller ta bort appen för att ta bort allt. Köp finns kvar på ditt Apple-konto.",
     "siteTitle": "Den här webbplatsen",

@@ -11,7 +11,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
 const SITE = 'https://tintronix-lab.github.io/Juno-LittleWorlds/';
-const EFFECTIVE = new Date(Date.UTC(2026, 9, 21));
+const EFFECTIVE = new Date(Date.UTC(2026, 9, 22));
 /** The studio, named in every language's footer (the same name as the app's studio card). */
 const OWNER = 'Raztech Innovations';
 /** Where support and privacy questions go; "{email}" in the text. */
@@ -186,7 +186,9 @@ function render([tag, folder], page) {
 
   /** The game in this page's language (assets/shots/<tag>/), else the English one. */
   const shotPath = (file) =>
-    [`assets/shots/${tag}/${file}.jpg`, `assets/shots/en/${file}.jpg`].find((path) => existsSync(path));
+    [`assets/shots/${tag}/${file}.jpg`, `assets/shots/en/${file}.jpg`].find((path) =>
+      existsSync(path),
+    );
   const shots = SHOTS.filter(([file]) => shotPath(file));
   const faq = (keys) =>
     keys
@@ -331,7 +333,17 @@ ${faq(['asleep', 'gate', 'voice', 'lose', 'coins', 'pressure'])}
         <ul>
 ${[1, 2, 3, 4, 5, 6].map((n) => `          <li>${t(`not${n}`)}</li>`).join('\n')}
         </ul>
-${['readAloud', 'purchases', 'parentArea', 'children', 'delete', 'site', 'changes', 'contact']
+${[
+  'readAloud',
+  'purchases',
+  'parentArea',
+  'children',
+  'ageRange',
+  'delete',
+  'site',
+  'changes',
+  'contact',
+]
   .map(
     (key) => `
         <h2>${t(`${key}Title`)}</h2>

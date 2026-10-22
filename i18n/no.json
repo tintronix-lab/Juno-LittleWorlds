@@ -108,6 +108,8 @@
     "parentArea": "En voksen åpner det med ⚙︎-knappen og foreldresperren. Der kan du velge språk, opplesning, lyder, leggetid, en vennlig påminnelse om pause og hvor lenge kortene i Minnehagen ligger med bildet opp, og du kan starte spillet på nytt.",
     "childrenTitle": "Barn",
     "children": "JUNO er laget for barn fra 6 til 10 år og behandler alle som spiller, som barn. Fordi spillet ikke samler inn noen personopplysninger i det hele tatt, er det ingenting å be om samtykke til, dele eller selge.",
+    "ageRangeTitle": "Aldersgruppe",
+    "ageRange": "Noen steder, for eksempel Texas, krever at apper sjekker spillerens aldersgruppe. Der loven krever det, bruker JUNO Apples egen måte å spørre på: en voksen kan velge å dele en aldersgruppe som «under 13», aldri en fødselsdato. JUNO beholder svaret bare mens spillet er åpent, lagrer eller sender det aldri, og spillet er likt i alle aldre. Hvis en voksen velger å ikke dele, venter spillet til en voksen sier ja.",
     "deleteTitle": "Slette barnets data",
     "delete": "Velg <b>Start spillet på nytt</b> under Foreldre for å fjerne Junoen og all fremgang, eller slett appen for å fjerne alt. Kjøp blir værende på Apple-kontoen din.",
     "siteTitle": "Dette nettstedet",

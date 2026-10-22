@@ -108,6 +108,8 @@
     "parentArea": "En voksen åbner det med ⚙︎-knappen og forældrespærren. Der kan du indstille sprog, oplæsning, lyde, sengetid, en blid påmindelse om pause og hvor længe kortene i Huskehaven ligger med billedsiden opad, og du kan starte spillet forfra.",
     "childrenTitle": "Børn",
     "children": "JUNO er lavet til børn på 6 til 10 år og behandler alle spillere som børn. Fordi spillet slet ikke indsamler personoplysninger, er der intet at bede om samtykke til, dele eller sælge.",
+    "ageRangeTitle": "Aldersgruppe",
+    "ageRange": "Nogle steder, for eksempel Texas, kræver, at apps tjekker spillerens aldersgruppe. Hvor loven kræver det, bruger JUNO Apples egen måde at spørge på: en voksen kan vælge at dele en aldersgruppe som \"under 13\", aldrig en fødselsdato. JUNO beholder kun svaret, mens spillet er åbent, gemmer eller sender det aldrig, og spillet er det samme i alle aldre. Hvis en voksen vælger ikke at dele, venter spillet, til en voksen siger ja.",
     "deleteTitle": "Slet dit barns data",
     "delete": "Vælg <b>Start spillet forfra</b> under Forældre for at fjerne Junoen og alle fremskridt, eller slet appen for at fjerne alt. Køb forbliver på din Apple-konto.",
     "siteTitle": "Dette websted",

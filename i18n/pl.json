@@ -108,6 +108,8 @@
     "parentArea": "Dorosły otwiera ją przyciskiem ⚙︎ i blokadą rodzicielską. Możesz tam ustawić język, czytanie na głos, dźwięki, porę snu, łagodne przypomnienie o przerwie oraz to, jak długo karty w Ogrodzie Pamięci pozostają odkryte, a także zacząć grę od nowa.",
     "childrenTitle": "Dzieci",
     "children": "JUNO jest przeznaczone dla dzieci w wieku od 6 do 10 lat i traktuje każdego gracza jak dziecko. Ponieważ nie zbiera żadnych danych osobowych, nie ma niczego, na co trzeba by prosić o zgodę, czym można by się dzielić ani co można by sprzedać.",
+    "ageRangeTitle": "Przedział wieku",
+    "ageRange": "W niektórych miejscach, na przykład w Teksasie, aplikacje muszą sprawdzać przedział wieku gracza. Tam, gdzie wymaga tego prawo, JUNO pyta w sposób Apple: dorosły może udostępnić przedział wieku, np. „poniżej 13 lat”, nigdy datę urodzenia. JUNO przechowuje odpowiedź tylko, gdy gra jest otwarta, nigdy jej nie zapisuje ani nie wysyła, a gra jest taka sama w każdym wieku. Jeśli dorosły nie chce jej udostępnić, gra czeka, aż dorosły się zgodzi.",
     "deleteTitle": "Usuwanie danych dziecka",
     "delete": "Wybierz <b>Zacznij grę od nowa</b> w Strefie rodzica, aby usunąć Juno i cały postęp, albo usuń aplikację, aby usunąć wszystko. Zakupy pozostają na Twoim koncie Apple.",
     "siteTitle": "Ta strona internetowa",

@@ -108,6 +108,8 @@
     "parentArea": "Un adulto la apre con il pulsante ⚙︎ e il blocco parentale. Lì puoi impostare la lingua, la lettura ad alta voce, i suoni, l'ora di dormire, un gentile promemoria per la pausa e per quanto tempo le carte del Giardino delle coppie restano scoperte, e puoi ricominciare il gioco.",
     "childrenTitle": "Bambini",
     "children": "JUNO è pensato per bambini dai 6 ai 10 anni e tratta ogni giocatore come un bambino. Poiché non raccoglie alcun dato personale, non c'è nulla per cui chiedere il consenso, né nulla da condividere o vendere.",
+    "ageRangeTitle": "Fascia di età",
+    "ageRange": "Alcuni luoghi, come il Texas, chiedono alle app di verificare la fascia di età di chi gioca. Dove la legge lo chiede, JUNO usa il modo di Apple: un adulto può scegliere di condividere una fascia di età come «meno di 13 anni», mai una data di nascita. JUNO tiene la risposta solo finché il gioco è aperto, non la salva né la invia mai, e il gioco è uguale a ogni età. Se un adulto sceglie di non condividerla, il gioco aspetta che un adulto dica di sì.",
     "deleteTitle": "Cancellare i dati di tuo figlio",
     "delete": "Scegli <b>Ricomincia il gioco</b> nell'Area genitori per rimuovere il Juno e tutti i progressi, oppure elimina l'app per cancellare tutto. Gli acquisti restano legati al tuo account Apple.",
     "siteTitle": "Questo sito",

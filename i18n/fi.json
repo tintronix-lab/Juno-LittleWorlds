@@ -108,6 +108,8 @@
     "parentArea": "Aikuinen avaa sen ⚙︎-painikkeella ja lapsilukolla. Siellä voit valita kielen, ääneen lukemisen, äänet, nukkumaanmenoajan, lempeän taukomuistutuksen ja sen, kuinka kauan Muistipuutarhan kortit pysyvät kuvapuoli ylöspäin, ja voit aloittaa pelin alusta.",
     "childrenTitle": "Lapset",
     "children": "JUNO on tehty 6–10-vuotiaille lapsille, ja se kohtelee jokaista pelaajaa lapsena. Koska se ei kerää lainkaan henkilötietoja, ei ole mitään, mihin pyytää suostumusta, mitä jakaa tai mitä myydä.",
+    "ageRangeTitle": "Ikäryhmä",
+    "ageRange": "Joissakin paikoissa, kuten Texasissa, sovellusten on tarkistettava pelaajan ikäryhmä. Kun laki sitä vaatii, JUNO kysyy sitä Applen omalla tavalla: aikuinen voi halutessaan kertoa ikäryhmän, kuten ”alle 13”, ei koskaan syntymäpäivää. JUNO pitää vastauksen vain niin kauan kuin peli on auki, ei koskaan tallenna tai lähetä sitä, ja peli on samanlainen kaiken ikäisille. Jos aikuinen ei halua kertoa, peli odottaa, kunnes aikuinen sanoo kyllä.",
     "deleteTitle": "Lapsesi tietojen poistaminen",
     "delete": "Valitse Vanhemmille-osiosta <b>Aloita peli alusta</b>, niin Juno ja kaikki edistyminen poistetaan, tai poista sovellus, niin kaikki poistetaan. Ostokset säilyvät Apple-tililläsi.",
     "siteTitle": "Tämä verkkosivusto",

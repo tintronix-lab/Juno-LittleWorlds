@@ -108,6 +108,8 @@
     "parentArea": "A grown-up opens it with the ⚙︎ button and the parental gate. There you can set the language, reading aloud, sounds, bedtime, a gentle break reminder, and how long Memory Garden cards stay face up, and you can start the game over.",
     "childrenTitle": "Children",
     "children": "JUNO is made for children aged 6 to 10 and treats every player as a child. Because it collects no personal information at all, there is nothing to ask consent for, share or sell.",
+    "ageRangeTitle": "Age range",
+    "ageRange": "Some places, such as Texas, ask apps to check a player's age range. Where the law asks for it, JUNO uses Apple's own way of asking: a grown-up can choose to share an age range such as “under 13”, never a birthday. JUNO keeps the answer only while the game is open, never saves or sends it, and the game is the same at every age. If a grown-up chooses not to share, the game waits until a grown-up says yes.",
     "deleteTitle": "Deleting your child's data",
     "delete": "Choose <b>Start the game over</b> in the Parent Area to remove the Juno and all progress, or delete the app to remove everything. Purchases stay with your Apple account.",
     "siteTitle": "This website",
