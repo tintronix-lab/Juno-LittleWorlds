@@ -13,7 +13,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 const SITE = 'https://tintronix-lab.github.io/Juno-LittleWorlds/';
 const EFFECTIVE = new Date(Date.UTC(2026, 9, 22));
 /** The studio, named in every language's footer (the same name as the app's studio card). */
-const OWNER = 'Raztech Innovations';
+const OWNER = 'RazTech Innovations';
 /** Where support and privacy questions go; "{email}" in the text. */
 const SUPPORT_EMAIL = 'raztechsupport@icloud.com';
 
