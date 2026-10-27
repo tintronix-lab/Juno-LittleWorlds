@@ -14,6 +14,8 @@ const SITE = 'https://tintronix-lab.github.io/Juno-LittleWorlds/';
 const EFFECTIVE = new Date(Date.UTC(2026, 9, 22));
 /** The studio, named in every language's footer (the same name as the app's studio card). */
 const OWNER = 'RazTech Innovations';
+/** JUNO on the App Store; with no country in it, Apple opens the visitor's own store. */
+const APP_STORE = 'https://apps.apple.com/app/id6825027309';
 /** Where support and privacy questions go; "{email}" in the text. */
 const SUPPORT_EMAIL = 'raztechsupport@icloud.com';
 
@@ -215,7 +217,7 @@ function render([tag, folder], page) {
           <blockquote>${t('bubble')}</blockquote>
           <figcaption>${t('bubbleWho')}</figcaption>
         </figure>
-        <span class="badge">${t('badge')}</span>
+        <a class="badge" href="${APP_STORE}">${t('badge')}</a>
         <ul class="promises">
 ${[1, 2, 3, 4].map((n) => `          <li>${t(`promise${n}`)}</li>`).join('\n')}
         </ul>
@@ -369,6 +371,7 @@ ${[
     <meta property="og:description" content="${description}" />
     <meta property="og:image" content="${SITE}${image}" />
     <meta name="theme-color" content="#a58ce8" />
+    <meta name="apple-itunes-app" content="app-id=6825027309" />
     <link rel="canonical" href="${url(folder, page)}" />
 ${available.map(([other, f]) => `    <link rel="alternate" hreflang="${other}" href="${url(f, page)}" />`).join('\n')}
     <link rel="alternate" hreflang="x-default" href="${url('', page)}" />
